@@ -55,3 +55,5 @@ async function startServer() {
 }
 
 startServer();
+
+app.get("/", (req, res) => res.send("Backend running"));
