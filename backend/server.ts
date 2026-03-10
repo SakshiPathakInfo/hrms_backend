@@ -9,18 +9,23 @@ import dashboardRoutes from "./routes/dashboardRoutes";
 dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 app.use(express.json());
 
-// MongoDB Connection
+// MongoDB Connection (read from environment)
 const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
-  throw new Error('MONGODB_URI environment variable is not defined');
+  console.error("Missing MONGODB_URI in environment. Create a .env file in backend with MONGODB_URI and PORT (optional). Example: .env.example");
+  process.exit(1);
 }
+
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
 
 // API Routes
 app.use("/api/employees", employeeRoutes);
@@ -40,7 +45,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(Server running on http://localhost:${PORT});
   });
 }
 
