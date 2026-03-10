@@ -1,97 +1,81 @@
 # HRMS Lite
 
-A lightweight Human Resource Management System built with React, Express, TypeScript, and MongoDB.
+## Project Overview
 
-## Features
+HRMS Lite is a lightweight Human Resource Management System that provides essential HR functionalities including employee management, attendance tracking, and dashboard analytics. Built as a full-stack application, it offers a modern web interface for managing employee data and tracking attendance records.
 
-- Employee management (CRUD operations)
-- Attendance tracking
-- Dashboard with key metrics
-- Modern React frontend with Tailwind CSS
+### Key Features
+- Employee CRUD operations (Create, Read, Update, Delete)
+- Attendance tracking and management
+- Dashboard with key HR metrics
+- Responsive web interface
 - RESTful API backend
-- MongoDB database integration
 
-## Tech Stack
+## Tech Stack Used
 
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Lucide React icons
-- **Backend**: Express.js, TypeScript, MongoDB with Mongoose
-- **Database**: MongoDB
-- **Development**: Vite dev server, TSX for TypeScript execution
+- **Backend**: Express.js, TypeScript, Node.js
+- **Database**: MongoDB with Mongoose ODM
+- **Development Tools**: TSX for TypeScript execution, Vite dev server
+- **Additional Libraries**: date-fns for date handling, better-sqlite3 (fallback), dotenv for environment variables
 
-## Installation
+## Steps to Run the Project Locally
 
-1. Clone the repository
-2. Navigate to the backend directory
-3. Install dependencies:
+### Prerequisites
+- Node.js (version 18 or higher)
+- MongoDB (local installation or cloud instance)
+- npm or yarn package manager
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd hrms-lite/backend
+   ```
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-4. Create a `.env` file in the backend directory with:
+3. **Environment Setup**
+   Create a `.env` file in the backend directory:
    ```
    MONGODB_URI=mongodb://localhost:27017/hrms-lite
    PORT=3001
    ```
 
-5. Start MongoDB locally or update MONGODB_URI to point to your MongoDB instance
+4. **Start MongoDB**
+   Ensure MongoDB is running locally on port 27017, or update the MONGODB_URI to point to your MongoDB instance.
 
-## Usage
+5. **Run the application**
+   ```bash
+   npm run dev
+   ```
 
-### Development
-```bash
-npm run dev
-```
-This starts the development server with hot reload for both frontend and backend.
+6. **Access the application**
+   Open your browser and navigate to `http://localhost:3001`
 
-### Production Build
-```bash
-npm run build
-npm start
-```
-
-### API Endpoints
-
-#### Employees
-- `GET /api/employees` - Get all employees
-- `POST /api/employees` - Create a new employee
-- `DELETE /api/employees/:id` - Delete an employee
-
-#### Attendance
-- `GET /api/attendance` - Get attendance records
-- `POST /api/attendance` - Record attendance
-- `DELETE /api/attendance/:id` - Delete attendance record
-
-#### Dashboard
-- `GET /api/dashboard` - Get dashboard statistics
-
-## Project Structure
-
-```
-backend/
-├── controllers/          # Route handlers
-├── models/              # MongoDB schemas
-├── routes/              # API route definitions
-├── server.ts            # Main server file
-├── package.json
-└── README.md
-```
-
-## Scripts
-
-- `npm run dev` - Start development server
+### Available Scripts
+- `npm run dev` - Start development server with hot reload
 - `npm run build` - Build for production
 - `npm start` - Start production server
-- `npm run lint` - Type check with TypeScript
-- `npm run clean` - Clean build directory
+- `npm run lint` - Run TypeScript type checking
 
-## Contributing
+## Assumptions or Limitations
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
+### Assumptions
+- MongoDB is available and accessible
+- Node.js version 18+ is installed
+- Basic understanding of web development concepts
+- Local development environment setup
 
-## License
-
-This project is licensed under the MIT License.
+### Limitations
+- Currently supports only MongoDB as the database
+- No user authentication/authorization system implemented
+- Limited to basic HR operations (employees and attendance)
+- No data export/import functionality
+- Dashboard metrics are basic and may need expansion for enterprise use
+- No automated testing suite included
+- Single environment configuration (development/production not fully separated)
